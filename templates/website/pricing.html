@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+
+{% block title %}Pricing - Hamro Engineering{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="gradient-bg text-white py-20">
+    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Choose Your Plan</h1>
+        <p class="text-xl text-gray-200 leading-relaxed">
+            Select the perfect plan that fits your preparation needs and budget
+        </p>
+    </div>
+</section>
+
+<!-- Pricing Section -->
+<section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Basic Plan -->
+            <div class="bg-white rounded-2xl card-shadow hover-lift p-8 relative">
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Basic</h3>
+                    <div class="text-4xl font-bold text-gray-900 mb-1">₹999</div>
+                    <div class="text-gray-500 mb-6">per month</div>
+                    
+                    <ul class="space-y-4 mb-8 text-left">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-gray-700">Access to 1000+ practice questions</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-gray-700">5 mock tests per month</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-gray-700">Basic performance analytics</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-gray-700">Email support</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-gray-700">Study resources access</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="{% url 'register' %}" class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-full font-semibold hover:bg-gray-200 transition-all block text-center">
+                        <i class="fas fa-user-plus mr-2"></i>Get Started
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Premium Plan (Most Popular) -->
+            <div class="bg-white rounded-2xl card-shadow hover-lift p-8 relative border-2 border-blue-500 transform scale-105">
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <span class="bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold">Most Popular</span>
+                </div>
+                
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Premium</h3>
+                    <div class="text-4xl font-bold text-blue-600 mb-1">₹1999</div>
+                    <div class="text-gray-500 mb-6">per month</div>
+                    
+                    <ul class="space-y-4 mb-8 text-left">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-gray-700">Everything in Basic</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-gray-700">Unlimited mock tests</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-gray-700">Advanced analytics & insights</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-gray-700">Priority email support</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-gray-700">Personalized study plans</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-gray-700">Leaderboard access</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-gray-700">Mobile app access</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="{% url 'register' %}" class="w-full bg-blue-600 text-white py-3 px-6 rounded-full font-semibold hover:bg-blue-700 transition-all block text-center">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Enterprise Plan -->
+            <div class="bg-white rounded-2xl card-shadow hover-lift p-8 relative">
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Enterprise</h3>
+                    <div class="text-4xl font-bold text-gray-900 mb-1">₹4999</div>
+                    <div class="text-gray-500 mb-6">per month</div>
+                    
+                    <ul class="space-y-4 mb-8 text-left">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-gray-700">Everything in Premium</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-gray-700">1-on-1 expert consultation</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-gray-700">Custom study materials</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-gray-700">Phone & WhatsApp support</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-gray-700">Progress reports & coaching</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-3"></i>
+                            <span class="text-gray-700">Exam strategy sessions</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="{% url 'website:contact' %}" class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-full font-semibold hover:bg-gray-200 transition-all block text-center">
+                        Contact Sales
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Additional Info -->
+        <div class="mt-16 text-center">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">All Plans Include</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-blue-600 text-xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-900 mb-2">Secure Platform</h4>
+                    <p class="text-gray-600">Your data is protected with enterprise-grade security</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-sync text-green-600 text-xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-900 mb-2">Regular Updates</h4>
+                    <p class="text-gray-600">Fresh content and features added monthly</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-headset text-purple-600 text-xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-900 mb-2">24/7 Support</h4>
+                    <p class="text-gray-600">Get help whenever you need it</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- FAQ Section -->
+        <div class="mt-20">
+            <h3 class="text-3xl font-bold text-gray-900 text-center mb-12">Frequently Asked Questions</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-xl card-shadow">
+                    <h4 class="text-lg font-semibold text-gray-900 mb-3">Can I change my plan later?</h4>
+                    <p class="text-gray-600">Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl card-shadow">
+                    <h4 class="text-lg font-semibold text-gray-900 mb-3">Is there a free trial?</h4>
+                    <p class="text-gray-600">Yes, we offer a 7-day free trial for all plans so you can experience the full features.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl card-shadow">
+                    <h4 class="text-lg font-semibold text-gray-900 mb-3">What payment methods do you accept?</h4>
+                    <p class="text-gray-600">We accept all major credit cards, debit cards, and popular payment gateways like Khalti and eSewa.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl card-shadow">
+                    <h4 class="text-lg font-semibold text-gray-900 mb-3">Can I cancel anytime?</h4>
+                    <p class="text-gray-600">Absolutely! You can cancel your subscription at any time with no cancellation fees.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20 bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Preparation?</h2>
+        <p class="text-xl mb-8 text-blue-100">
+            Join thousands of students who are already preparing for engineering entrance exams
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="{% url 'register' %}" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all">
+                <i class="fas fa-rocket mr-2"></i>Start Free Trial
+            </a>
+            <a href="{% url 'website:contact' %}" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all">
+                <i class="fas fa-envelope mr-2"></i>Contact Us
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - Hamro Engineering{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto">
+    <h1 class="text-4xl font-bold mb-8">Welcome, {{ user.first_name|default:user.username }}!</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-2">Active Subscription</h3>
+            {% if active_subscription %}
+                <p class="text-green-600 font-semibold">{{ active_subscription.plan.name }}</p>
+                <p class="text-sm text-gray-600">Expires: {{ active_subscription.end_date|date:"M d, Y" }}</p>
+            {% else %}
+                <p class="text-gray-500">No active subscription</p>
+                <a href="{% url 'website:pricing' %}" class="text-blue-600 hover:underline">View Plans</a>
+            {% endif %}
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-2">Available Tests</h3>
+            <p class="text-2xl font-bold text-blue-600">{{ available_tests.count }}</p>
+            <p class="text-sm text-gray-600">Mock tests available</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-2">Recent Activity</h3>
+            <p class="text-2xl font-bold text-green-600">{{ recent_activity.count }}</p>
+            <p class="text-sm text-gray-600">Test attempts</p>
+        </div>
+    </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-semibold mb-4">Available Mock Tests</h3>
+            {% if available_tests %}
+                <div class="space-y-3">
+                    {% for test in available_tests %}
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h4 class="font-semibold">{{ test.name }}</h4>
+                        <p class="text-sm text-gray-600">{{ test.description|truncatewords:15 }}</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-sm text-gray-500">{{ test.test_type }}</span>
+                            <span class="text-sm text-gray-500">{{ test.duration_minutes }} min</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="text-gray-500">No mock tests available at the moment.</p>
+            {% endif %}
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-semibold mb-4">Recent Activity</h3>
+            {% if recent_activity %}
+                <div class="space-y-3">
+                    {% for attempt in recent_activity %}
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h4 class="font-semibold">{{ attempt.mock_test.name }}</h4>
+                        <p class="text-sm text-gray-600">Status: {{ attempt.status }}</p>
+                        {% if attempt.score %}
+                            <p class="text-sm text-gray-600">Score: {{ attempt.score }}%</p>
+                        {% endif %}
+                        <p class="text-xs text-gray-500">{{ attempt.started_at|date:"M d, Y" }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="text-gray-500">No recent activity.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

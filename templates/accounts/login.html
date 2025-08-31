@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - Hamro Engineering{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="gradient-bg text-white py-12">
+    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">Welcome Back</h1>
+        <p class="text-lg text-gray-200 leading-relaxed">
+            Sign in to your account and continue your engineering preparation journey
+        </p>
+    </div>
+</section>
+
+<!-- Login Form Section -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-md mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white p-8 rounded-2xl card-shadow hover-lift">
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i class="fas fa-sign-in-alt text-white text-lg"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">Sign In</h2>
+                <p class="text-sm text-gray-600">Access your account and study materials</p>
+            </div>
+            
+            <form id="loginForm" class="space-y-6">
+                {% csrf_token %}
+                
+                <!-- Email -->
+                <div>
+                    <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
+                        Email Address <span class="text-red-500">*</span>
+                    </label>
+                    <input type="email" id="email" name="email" required 
+                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                           placeholder="your.email@example.com">
+                </div>
+                
+                <!-- Password -->
+                <div>
+                    <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">
+                        Password <span class="text-red-500">*</span>
+                    </label>
+                    <input type="password" id="password" name="password" required 
+                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                           placeholder="Enter your password">
+                </div>
+                
+                <!-- Remember Me & Forgot Password -->
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="remember" name="remember" 
+                               class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <label for="remember" class="ml-2 text-sm text-gray-700">Remember me</label>
+                    </div>
+                    <a href="#" class="text-sm text-blue-600 hover:text-blue-700 font-medium">
+                        Forgot password?
+                    </a>
+                </div>
+                
+                <!-- Submit Button -->
+                <button type="submit" class="w-full bg-blue-600 text-white py-4 px-6 rounded-xl font-semibold text-lg hover:bg-blue-700 transition-all hover:shadow-lg">
+                    <i class="fas fa-sign-in-alt mr-2"></i>Sign In
+                </button>
+                
+                <!-- Register Link -->
+                <div class="text-center">
+                    <p class="text-gray-600">
+                        Don't have an account? 
+                        <a href="{% url 'register' %}" class="text-blue-600 hover:text-blue-700 font-semibold">
+                            Create one here
+                        </a>
+                    </p>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Quick Links -->
+        <div class="mt-8 bg-white p-6 rounded-2xl card-shadow">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4 text-center">Quick Access</h3>
+            <div class="space-y-3">
+                <a href="#" class="flex items-center justify-center text-blue-600 hover:text-blue-700 font-medium py-2">
+                    <i class="fas fa-question-circle mr-2"></i>
+                    Need help signing in?
+                </a>
+                <a href="#" class="flex items-center justify-center text-blue-600 hover:text-blue-700 font-medium py-2">
+                    <i class="fas fa-envelope mr-2"></i>
+                    Contact support
+                </a>
+                <a href="#" class="flex items-center justify-center text-blue-600 hover:text-blue-700 font-medium py-2">
+                    <i class="fas fa-book mr-2"></i>
+                    View documentation
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Show loading state
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Signing In...';
+    submitBtn.disabled = true;
+    
+    // Prepare form data
+    const formData = {
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value
+    };
+    
+    // Submit to API
+    fetch('{% url "accounts:api-login" %}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success || data.message) {
+            // Show success message
+            const successDiv = document.createElement('div');
+            successDiv.className = 'mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-xl';
+            successDiv.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Login successful! Redirecting...';
+            
+            const form = document.getElementById('loginForm');
+            form.appendChild(successDiv);
+            
+            // Redirect to dashboard after 2 seconds
+            setTimeout(() => {
+                window.location.href = '{% url "website:dashboard" %}';
+            }, 2000);
+        } else {
+            throw new Error('Login failed');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Show error message
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-xl';
+        errorDiv.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i>Login failed. Please check your credentials and try again.';
+        
+        const form = document.getElementById('loginForm');
+        form.appendChild(errorDiv);
+        
+        // Remove error message after 5 seconds
+        setTimeout(() => {
+            errorDiv.remove();
+        }, 5000);
+    })
+    .finally(() => {
+        // Reset button state
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    });
+});
+</script>
+{% endblock %}

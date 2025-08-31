@@ -1,0 +1,255 @@
+{% extends 'base.html' %}
+
+{% block title %}Hamro Engineering - Your Gateway to Engineering Success{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="gradient-bg text-white py-16">
+    <div class="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
+            Hamro Engineering
+        </h1>
+        <p class="text-lg md:text-xl text-gray-200 leading-relaxed mb-8 max-w-3xl mx-auto">
+            Your Gateway to Engineering Success
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="{% url 'register' %}" class="bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold text-base hover:bg-blue-700 transition-all hover:shadow-lg">
+                <i class="fas fa-rocket mr-2"></i>Start Your Preparation Today
+            </a>
+            <a href="{% url 'website:features' %}" class="border-2 border-white text-white px-8 py-3 rounded-xl font-semibold text-base hover:bg-white hover:text-blue-600 transition-all">
+                <i class="fas fa-info-circle mr-2"></i>Learn More
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-12 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="text-center">
+                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i class="fas fa-users text-blue-600 text-lg"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-1">10,000+</h3>
+                <p class="text-sm text-gray-600">Active Students</p>
+            </div>
+            <div class="text-center">
+                <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i class="fas fa-question-circle text-green-600 text-lg"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-1">50,000+</h3>
+                <p class="text-sm text-gray-600">Practice Questions</p>
+            </div>
+            <div class="text-center">
+                <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i class="fas fa-university text-purple-600 text-lg"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-1">100+</h3>
+                <p class="text-sm text-gray-600">Mock Tests</p>
+            </div>
+            <div class="text-center">
+                <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i class="fas fa-trophy text-yellow-600 text-lg"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-1">95%</h3>
+                <p class="text-sm text-gray-600">Success Rate</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">About Us</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                Empowering students with comprehensive engineering entrance exam preparation tools and resources
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="bg-white p-8 rounded-2xl card-shadow hover-lift">
+                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                    <i class="fas fa-bullseye text-blue-600 text-lg"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Our Mission</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    To provide comprehensive engineering entrance preparation resources that empower students to achieve their dreams of studying engineering at top universities in Nepal.
+                </p>
+            </div>
+            
+            <div class="bg-white p-8 rounded-2xl card-shadow hover-lift">
+                <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+                    <i class="fas fa-star text-green-600 text-lg"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Why Choose Us</h3>
+                <ul class="space-y-3 text-gray-600">
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        IOE-style mock tests
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        Comprehensive MCQ practice
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        Expert study materials
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        Real-time analytics
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Platform Features</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                Everything you need to excel in your engineering entrance exams
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-2xl card-shadow hover-lift border border-gray-100">
+                <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                    <i class="fas fa-clipboard-list text-blue-600"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Mock Tests</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                    Practice with realistic IOE-style mock tests that simulate actual exam conditions.
+                </p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-2xl card-shadow hover-lift border border-gray-100">
+                <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+                    <i class="fas fa-question-circle text-green-600"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">MCQ Practice</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                    Access thousands of carefully curated multiple-choice questions across all subjects.
+                </p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-2xl card-shadow hover-lift border border-gray-100">
+                <div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+                    <i class="fas fa-book text-purple-600"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Study Resources</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                    Comprehensive study materials, formulas, and reference guides for all topics.
+                </p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-2xl card-shadow hover-lift border border-gray-100">
+                <div class="w-10 h-10 bg-yellow-100 rounded-xl flex items-center justify-center mb-4">
+                    <i class="fas fa-chart-line text-yellow-600"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Analytics</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                    Track your progress with detailed performance analytics and insights.
+                </p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-2xl card-shadow hover-lift border border-gray-100">
+                <div class="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center mb-4">
+                    <i class="fas fa-trophy text-red-600"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Leaderboard</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                    Compete with peers and climb the leaderboard to stay motivated.
+                </p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-2xl card-shadow hover-lift border border-gray-100">
+                <div class="w-10 h-10 bg-indigo-100 rounded-xl flex items-center justify-center mb-4">
+                    <i class="fas fa-bell text-indigo-600"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Notifications</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                    Stay updated with exam dates, new content, and personalized reminders.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Announcements Section -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Latest Updates</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                Stay informed about new features, exam updates, and important announcements
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-2xl card-shadow hover-lift">
+                <div class="flex items-center mb-4">
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-newspaper text-blue-600 text-sm"></i>
+                    </div>
+                    <span class="text-xs text-gray-500">2 days ago</span>
+                </div>
+                <h3 class="text-base font-semibold text-gray-900 mb-2">New Mock Test Available</h3>
+                <p class="text-sm text-gray-600">
+                    Practice with our latest IOE-style mock test covering Mathematics and Physics.
+                </p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-2xl card-shadow hover-lift">
+                <div class="flex items-center mb-4">
+                    <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-calendar text-green-600 text-sm"></i>
+                    </div>
+                    <span class="text-xs text-gray-500">1 week ago</span>
+                </div>
+                <h3 class="text-base font-semibold text-gray-900 mb-2">Exam Schedule Updated</h3>
+                <p class="text-sm text-gray-600">
+                    Check the updated schedule for upcoming engineering entrance exams.
+                </p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-2xl card-shadow hover-lift">
+                <div class="flex items-center mb-4">
+                    <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-gift text-purple-600 text-sm"></i>
+                    </div>
+                    <span class="text-xs text-gray-500">2 weeks ago</span>
+                </div>
+                <h3 class="text-base font-semibold text-gray-900 mb-2">Premium Features</h3>
+                <p class="text-sm text-gray-600">
+                    Unlock advanced analytics and unlimited practice with our premium plans.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-16 bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold mb-4">Ready to Start Your Engineering Journey?</h2>
+        <p class="text-lg mb-8 text-blue-100">
+            Join thousands of students preparing for engineering entrance exams
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="{% url 'register' %}" class="bg-white text-blue-600 px-8 py-3 rounded-xl font-semibold text-base hover:bg-gray-100 transition-all">
+                <i class="fas fa-rocket mr-2"></i>Get Started Today
+            </a>
+            <a href="{% url 'website:pricing' %}" class="border-2 border-white text-white px-8 py-3 rounded-xl font-semibold text-base hover:bg-white hover:text-blue-600 transition-all">
+                <i class="fas fa-tags mr-2"></i>View Pricing
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

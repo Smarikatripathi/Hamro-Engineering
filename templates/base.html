@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Hamro Engineering - Your Gateway to Engineering Success{% endblock %}</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'navy': {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #0D1B2A 0%, #1B263B 100%);
+        }
+        
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #0099FF 0%, #00AEEF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mr-3">
+                        <i class="fas fa-graduation-cap text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-900">Hamro Engineering</h1>
+                        <p class="text-xs text-gray-500 -mt-1">Your Gateway to Success</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="{% url 'website:index' %}" class="text-gray-700 hover:text-blue-600 font-medium text-sm transition-colors">Home</a>
+                    <a href="{% url 'website:about' %}" class="text-gray-700 hover:text-blue-600 font-medium text-sm transition-colors">About</a>
+                    <a href="{% url 'website:features' %}" class="text-gray-700 hover:text-blue-600 font-medium text-sm transition-colors">Features</a>
+                    <a href="{% url 'website:pricing' %}" class="text-gray-700 hover:text-blue-600 font-medium text-sm transition-colors">Pricing</a>
+                    <a href="{% url 'website:contact' %}" class="text-gray-700 hover:text-blue-600 font-medium text-sm transition-colors">Contact</a>
+                </div>
+                
+                <!-- Auth Buttons -->
+                <div class="flex items-center space-x-4">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'website:dashboard' %}" class="text-blue-600 hover:text-blue-700 font-medium text-sm">
+                            <i class="fas fa-tachometer-alt mr-2"></i>Dashboard
+                        </a>
+                        <a href="{% url 'logout' %}" class="bg-red-500 text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-red-600 transition-all hover:shadow-lg">
+                            <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                        </a>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="text-blue-600 hover:text-blue-700 font-medium text-sm">
+                            <i class="fas fa-sign-in-alt mr-2"></i>Login
+                        </a>
+                        <a href="{% url 'register' %}" class="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-blue-700 transition-all hover:shadow-lg">
+                            <i class="fas fa-user-plus mr-2"></i>Sign Up
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-graduation-cap text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold">Hamro Engineering</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                        Your comprehensive platform for engineering entrance exam preparation. 
+                        Access thousands of practice questions, mock tests, and study resources.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-facebook text-lg"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-twitter text-lg"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-linkedin text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-sm font-semibold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="{% url 'website:index' %}" class="text-gray-300 hover:text-blue-400 text-sm transition-colors">Home</a></li>
+                        <li><a href="{% url 'website:about' %}" class="text-gray-300 hover:text-blue-400 text-sm transition-colors">About</a></li>
+                        <li><a href="{% url 'website:features' %}" class="text-gray-300 hover:text-blue-400 text-sm transition-colors">Features</a></li>
+                        <li><a href="{% url 'website:pricing' %}" class="text-gray-300 hover:text-blue-400 text-sm transition-colors">Pricing</a></li>
+                        <li><a href="{% url 'website:contact' %}" class="text-gray-300 hover:text-blue-400 text-sm transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div>
+                    <h4 class="text-sm font-semibold text-white mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-blue-400 text-sm transition-colors">Help Center</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-blue-400 text-sm transition-colors">Contact Support</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-blue-400 text-sm transition-colors">FAQ</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-blue-400 text-sm transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-blue-400 text-sm transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400 text-sm">
+                    © 2025 Hamro Engineering. All rights reserved. | 
+                    Made with <i class="fas fa-heart text-red-500 mx-1"></i> for students
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

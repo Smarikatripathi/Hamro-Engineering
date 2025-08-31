@@ -1,0 +1,260 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - Hamro Engineering{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="gradient-bg text-white py-12">
+    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">Join Hamro Engineering</h1>
+        <p class="text-lg text-gray-200 leading-relaxed">
+            Start your engineering preparation journey today. Create your account and access thousands of practice questions and mock tests.
+        </p>
+    </div>
+</section>
+
+<!-- Registration Form Section -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white p-8 rounded-2xl card-shadow hover-lift">
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <i class="fas fa-user-plus text-white text-lg"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">Create Your Account</h2>
+                <p class="text-sm text-gray-600">Join thousands of students preparing for engineering entrance exams</p>
+            </div>
+            
+            <form id="registrationForm" class="space-y-6">
+                {% csrf_token %}
+                
+                <!-- Email Row -->
+                <div>
+                    <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
+                        Email Address <span class="text-red-500">*</span>
+                    </label>
+                    <input type="email" id="email" name="email" required 
+                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                           placeholder="your.email@example.com">
+                </div>
+                
+                <!-- Password Row -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">
+                            Password <span class="text-red-500">*</span>
+                        </label>
+                        <input type="password" id="password" name="password" required 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                               placeholder="Create a strong password">
+                        <p class="text-xs text-gray-500 mt-1">At least 8 characters</p>
+                    </div>
+                    
+                    <div>
+                        <label for="confirm_password" class="block text-sm font-semibold text-gray-700 mb-2">
+                            Confirm Password <span class="text-red-500">*</span>
+                        </label>
+                        <input type="password" id="confirm_password" name="confirm_password" required 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                               placeholder="Confirm your password">
+                    </div>
+                </div>
+                
+                <!-- Name Row -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="first_name" class="block text-sm font-semibold text-gray-700 mb-2">
+                            First Name <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text" id="first_name" name="first_name" required 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                               placeholder="Your first name">
+                    </div>
+                    
+                    <div>
+                        <label for="last_name" class="block text-sm font-semibold text-gray-700 mb-2">
+                            Last Name <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text" id="last_name" name="last_name" required 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                               placeholder="Your last name">
+                    </div>
+                </div>
+                
+                <!-- Phone Number -->
+                <div>
+                    <label for="phone_number" class="block text-sm font-semibold text-gray-700 mb-2">
+                        Phone Number
+                    </label>
+                    <input type="tel" id="phone_number" name="phone_number" 
+                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                           placeholder="+977-98-1234-5678">
+                    <p class="text-xs text-gray-500 mt-1">Optional - for account recovery</p>
+                </div>
+                
+                <!-- User Type -->
+                <div>
+                    <label for="user_type" class="block text-sm font-semibold text-gray-700 mb-2">
+                        I am a <span class="text-red-500">*</span>
+                    </label>
+                    <select id="user_type" name="user_type" required 
+                            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                        <option value="">Select your role</option>
+                        <option value="student">Student (Preparing for Engineering)</option>
+                        <option value="teacher">Teacher/Educator</option>
+                        <option value="parent">Parent</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <!-- Terms and Conditions -->
+                <div class="flex items-start space-x-3">
+                    <input type="checkbox" id="terms" name="terms" required 
+                           class="mt-1 h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                    <label for="terms" class="text-sm text-gray-700">
+                        I agree to the 
+                        <a href="#" class="text-blue-600 hover:text-blue-700 font-medium">Terms of Service</a> 
+                        and 
+                        <a href="#" class="text-blue-600 hover:text-blue-700 font-medium">Privacy Policy</a>
+                        <span class="text-red-500">*</span>
+                    </label>
+                </div>
+                
+                <!-- Submit Button -->
+                <button type="submit" class="w-full bg-blue-600 text-white py-4 px-6 rounded-xl font-semibold text-lg hover:bg-blue-700 transition-all hover:shadow-lg">
+                    <i class="fas fa-user-plus mr-2"></i>Create Account
+                </button>
+                
+                <!-- Login Link -->
+                <div class="text-center">
+                    <p class="text-gray-600">
+                        Already have an account? 
+                        <a href="{% url 'login' %}" class="text-blue-600 hover:text-blue-700 font-semibold">
+                            Sign in here
+                        </a>
+                    </p>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Benefits Section -->
+        <div class="mt-8 bg-white p-6 rounded-2xl card-shadow">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4 text-center">Why Register?</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                <div>
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-graduation-cap text-blue-600"></i>
+                    </div>
+                    <p class="text-sm text-gray-600">Access to 10,000+ practice questions</p>
+                </div>
+                <div>
+                    <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-chart-line text-green-600"></i>
+                    </div>
+                    <p class="text-sm text-gray-600">Track your progress with analytics</p>
+                </div>
+                <div>
+                    <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-trophy text-purple-600"></i>
+                    </div>
+                    <p class="text-sm text-gray-600">Compete on leaderboards</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.getElementById('registrationForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Basic validation
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm_password').value;
+    
+    if (password !== confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+    }
+    
+    if (password.length < 8) {
+        alert('Password must be at least 8 characters long!');
+        return;
+    }
+    
+    // Show loading state
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Creating Account...';
+    submitBtn.disabled = true;
+    
+    // Remove any existing error/success messages
+    const existingMessages = this.querySelectorAll('.mt-4');
+    existingMessages.forEach(msg => msg.remove());
+    
+    // Prepare form data - only send fields that the API expects
+    const formData = {
+        email: document.getElementById('email').value,
+        password: password,
+        confirm_password: confirmPassword,
+        first_name: document.getElementById('first_name').value,
+        last_name: document.getElementById('last_name').value,
+        phone_number: document.getElementById('phone_number').value || '',
+        user_type: document.getElementById('user_type').value || 'student'
+    };
+    
+    // Submit to API
+    fetch('{% url "accounts:api-register" %}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(data => {
+                throw new Error(data.detail || data.message || 'Registration failed');
+            });
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Show success message
+        const successDiv = document.createElement('div');
+        successDiv.className = 'mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-xl';
+        successDiv.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Account created successfully! Please check your email for verification.';
+        
+        const form = document.getElementById('registrationForm');
+        form.appendChild(successDiv);
+        form.reset();
+        
+        // Redirect to login after 3 seconds
+        setTimeout(() => {
+            window.location.href = '{% url "login" %}';
+        }, 3000);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Show error message
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-xl';
+        errorDiv.innerHTML = `<i class="fas fa-exclamation-circle mr-2"></i>${error.message}`;
+        
+        const form = document.getElementById('registrationForm');
+        form.appendChild(errorDiv);
+        
+        // Remove error message after 8 seconds
+        setTimeout(() => {
+            errorDiv.remove();
+        }, 8000);
+    })
+    .finally(() => {
+        // Reset button state
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    });
+});
+</script>
+{% endblock %}
