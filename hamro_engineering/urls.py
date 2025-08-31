@@ -1,3 +1,4 @@
+
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
@@ -19,6 +20,8 @@ urlpatterns = [
     path('api/payments/', include('payments.urls')),
     path('api/analytics/', include('analytics.urls')),
     path('api/notifications/', include('notifications.urls')),
+    path('notifications/', include('notifications.urls')),
+    path('resources/', include('resources.urls')),
     path('', include('website.urls')),
 ]
 

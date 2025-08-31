@@ -1,0 +1,347 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="max-w-5xl mx-auto pt-4 pb-8 px-4 flex flex-col items-center">
+    <h2 class="text-3xl font-extrabold mb-2 text-navy-900 tracking-tight text-center">Resources</h2>
+    <p class="text-gray-500 mb-6 text-center">Find, download, and explore the best study materials, notes, and past questions for engineering students. Curated by Hamro Engineering for your success.</p>
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="mb-4 p-3 rounded {{ message.tags }}" style="background:#f1f5f9; color:#334155;">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+
+    <!-- Search Bar Only -->
+    <div class="flex flex-col md:flex-row md:items-center md:justify-center gap-4 mb-6 w-full">
+        <div class="flex-1 flex items-center gap-2">
+            <input type="text" id="resourceSearch" placeholder="Search resources..." class="w-full md:w-72 px-4 py-2 border border-blue-200 rounded focus:outline-none focus:ring-2 focus:ring-blue-100 text-sm" />
+            <select id="resourceCategoryFilter" class="px-3 py-2 border border-blue-200 rounded text-sm bg-white">
+                <option value="">All Categories</option>
+                {% for category in categories %}
+                <option value="{{ category.name }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+            <select id="resourceUniversityFilter" class="px-3 py-2 border border-blue-200 rounded text-sm bg-white">
+                <option value="">All Universities</option>
+                {% for university in universities %}
+                <option value="{{ university.name }}">{{ university.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    <!-- Sticky Tabs for resource sections -->
+    <div class="mb-8 sticky top-16 z-10 bg-gray-50 pt-2 w-full flex justify-center">
+        <ul class="flex border-b text-base font-semibold justify-center bg-white rounded-t-lg shadow-sm">
+            <li class="-mb-px mr-2"><a class="tab-link bg-gradient-to-r from-blue-50 to-blue-100 inline-block border-l border-t border-r rounded-t py-2 px-6 text-blue-700 active transition-all duration-200 shadow" href="#" data-tab="bachelor-entrance"><i class="fa fa-graduation-cap mr-1"></i>Bachelor Entrance</a></li>
+            <li class="mr-2"><a class="tab-link bg-gradient-to-r from-blue-50 to-blue-100 inline-block border-l border-t border-r rounded-t py-2 px-6 text-blue-700 transition-all duration-200 shadow" href="#" data-tab="engineering-notes"><i class="fa fa-book mr-1"></i>Engineering Notes</a></li>
+            <li class="mr-2"><a class="tab-link bg-gradient-to-r from-blue-50 to-blue-100 inline-block border-l border-t border-r rounded-t py-2 px-6 text-blue-700 transition-all duration-200 shadow" href="#" data-tab="masters-entrance"><i class="fa fa-user-graduate mr-1"></i>Masters Entrance</a></li>
+            <li><a class="tab-link bg-gradient-to-r from-blue-50 to-blue-100 inline-block border-l border-t border-r rounded-t py-2 px-6 text-blue-700 transition-all duration-200 shadow" href="#" data-tab="masters-notes"><i class="fa fa-book-open mr-1"></i>Masters Notes</a></li>
+        </ul>
+    </div>
+
+
+
+</div>
+
+    <div id="bachelor-entrance" class="tab-content flex justify-center">
+        <div class="w-full max-w-3xl bg-white rounded-xl shadow border border-blue-100 p-6 mt-2">
+            <h3 class="text-xl font-semibold mb-4 flex items-center justify-center"><i class="fa fa-graduation-cap mr-2 text-blue-400"></i>Bachelor Entrance</h3>
+            <div class="mb-4 flex flex-wrap justify-center gap-2">
+                <button class="subtab-link px-4 py-1 rounded bg-blue-100 text-blue-700 font-medium active" data-subtab="bachelor-syllabus">Syllabus</button>
+                <button class="subtab-link px-4 py-1 rounded bg-blue-100 text-blue-700 font-medium" data-subtab="bachelor-notes">Notes</button>
+                <button class="subtab-link px-4 py-1 rounded bg-blue-100 text-blue-700 font-medium" data-subtab="bachelor-past">Past Questions</button>
+            </div>
+            <div id="bachelor-syllabus" class="subtab-content">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
+                {% for resource in resources %}
+                    {% if resource.category.name == 'Bachelor Entrance' and 'syllabus' in resource.title|lower %}
+                    {% include 'resources/resource_card.html' with resource=resource %}
+                    {% endif %}
+                {% empty %}
+                    <div class="col-span-2 text-center text-gray-400 py-12 flex flex-col items-center">
+                        <img src="https://cdn.jsdelivr.net/gh/hamroai/assets/empty-folder.svg" alt="No resources" class="w-32 mb-4 opacity-70" />
+                        <div class="font-semibold text-lg mb-1">No syllabus found.</div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+            <div id="bachelor-notes" class="subtab-content hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
+                {% for resource in resources %}
+                    {% if resource.category.name == 'Bachelor Entrance' and 'note' in resource.title|lower %}
+                    {% include 'resources/resource_card.html' with resource=resource %}
+                    {% endif %}
+                {% empty %}
+                    <div class="col-span-2 text-center text-gray-500 py-8">
+                        <i class="fa fa-folder-open text-4xl mb-2"></i>
+                        <div>No notes found.</div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+            <div id="bachelor-past" class="subtab-content hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
+                {% for resource in resources %}
+                    {% if resource.category.name == 'Bachelor Entrance' and 'past' in resource.title|lower %}
+                    {% include 'resources/resource_card.html' with resource=resource %}
+                    {% endif %}
+                {% empty %}
+                    <div class="col-span-2 text-center text-gray-500 py-8">
+                        <i class="fa fa-folder-open text-4xl mb-2"></i>
+                        <div>No past questions found.</div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="engineering-notes" class="tab-content hidden flex justify-center">
+        <div class="w-full max-w-3xl bg-white rounded-xl shadow border border-blue-100 p-6 mt-2">
+            <h3 class="text-xl font-semibold mb-4 flex items-center justify-center"><i class="fa fa-book mr-2 text-blue-400"></i>Engineering Notes (Bachelors)</h3>
+            <div class="mb-6 flex flex-wrap gap-4 justify-center items-center bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg p-4 shadow-sm border border-blue-100">
+                <div class="flex items-center space-x-2">
+                    <span class="font-medium text-blue-900"><i class="fa fa-layer-group mr-1"></i>Semester:</span>
+                    <select id="semesterFilter" class="form-select border border-blue-300 rounded px-3 py-1 text-sm bg-white focus:border-blue-400 focus:ring-2 focus:ring-blue-100">
+                        <option value="">All</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="font-medium text-blue-900"><i class="fa fa-cogs mr-1"></i>Course:</span>
+                    <select id="courseFilter" class="form-select border border-blue-300 rounded px-3 py-1 text-sm bg-white focus:border-blue-400 focus:ring-2 focus:ring-blue-100">
+                        <option value="">All</option>
+                        <option value="Computer Engineering">Computer Engineering</option>
+                        <option value="Software Engineering">Software Engineering</option>
+                        <option value="Civil Engineering">Civil Engineering</option>
+                        <option value="IT">IT</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mb-6 flex justify-center gap-4">
+                <button class="subtab-link px-5 py-2 rounded bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 font-semibold shadow active" data-subtab="engg-syllabus"><i class="fa fa-file-alt mr-1"></i>Syllabus</button>
+                <button class="subtab-link px-5 py-2 rounded bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 font-semibold shadow" data-subtab="engg-notes"><i class="fa fa-sticky-note mr-1"></i>Notes</button>
+                <button class="subtab-link px-5 py-2 rounded bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800 font-semibold shadow" data-subtab="engg-past"><i class="fa fa-history mr-1"></i>Past Questions</button>
+            </div>
+            <div id="engg-syllabus" class="subtab-content">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
+                {% for resource in resources %}
+                    {% if resource.category.name == 'Engineering Notes' and 'syllabus' in resource.title|lower %}
+                    {% include 'resources/resource_card.html' with resource=resource %}
+                    {% endif %}
+                {% empty %}
+                    <div class="col-span-2 text-center text-gray-500 py-8">
+                        <i class="fa fa-folder-open text-4xl mb-2"></i>
+                        <div>No syllabus found.</div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+            <div id="engg-notes" class="subtab-content hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
+                {% for resource in resources %}
+                    {% if resource.category.name == 'Engineering Notes' and 'note' in resource.title|lower %}
+                    {% include 'resources/resource_card.html' with resource=resource %}
+                    {% endif %}
+                {% empty %}
+                    <div class="col-span-2 text-center text-gray-500 py-8">
+                        <i class="fa fa-folder-open text-4xl mb-2"></i>
+                        <div>No notes found.</div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+            <div id="engg-past" class="subtab-content hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
+                {% for resource in resources %}
+                    {% if resource.category.name == 'Engineering Notes' and 'past' in resource.title|lower %}
+                    {% include 'resources/resource_card.html' with resource=resource %}
+                    {% endif %}
+                {% empty %}
+                    <div class="col-span-2 text-center text-gray-500 py-8">
+                        <i class="fa fa-folder-open text-4xl mb-2"></i>
+                        <div>No past questions found.</div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="masters-entrance" class="tab-content hidden flex justify-center">
+        <div class="w-full max-w-3xl bg-white rounded-xl shadow border border-blue-100 p-6 mt-2">
+            <h3 class="text-xl font-semibold mb-4 flex items-center justify-center"><i class="fa fa-user-graduate mr-2 text-blue-400"></i>Masters Entrance</h3>
+            <div class="mb-4 flex flex-wrap justify-center gap-2">
+                <button class="subtab-link px-4 py-1 rounded bg-blue-100 text-blue-700 font-medium active" data-subtab="masters-syllabus">Syllabus</button>
+                <button class="subtab-link px-4 py-1 rounded bg-blue-100 text-blue-700 font-medium" data-subtab="masters-notes">Notes</button>
+                <button class="subtab-link px-4 py-1 rounded bg-blue-100 text-blue-700 font-medium" data-subtab="masters-past">Past Questions</button>
+            </div>
+            <div id="masters-syllabus" class="subtab-content">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
+                {% for resource in resources %}
+                    {% if resource.category.name == 'Masters Entrance' and 'syllabus' in resource.title|lower %}
+                    {% include 'resources/resource_card.html' with resource=resource %}
+                    {% endif %}
+                {% empty %}
+                    <div class="col-span-2 text-center text-gray-500 py-8">
+                        <i class="fa fa-folder-open text-4xl mb-2"></i>
+                        <div>No syllabus found.</div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+            <div id="masters-notes" class="subtab-content hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
+                {% for resource in resources %}
+                    {% if resource.category.name == 'Masters Entrance' and 'note' in resource.title|lower %}
+                    {% include 'resources/resource_card.html' with resource=resource %}
+                    {% endif %}
+                {% empty %}
+                    <div class="col-span-2 text-center text-gray-500 py-8">
+                        <i class="fa fa-folder-open text-4xl mb-2"></i>
+                        <div>No notes found.</div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+            <div id="masters-past" class="subtab-content hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
+                {% for resource in resources %}
+                    {% if resource.category.name == 'Masters Entrance' and 'past' in resource.title|lower %}
+                    {% include 'resources/resource_card.html' with resource=resource %}
+                    {% endif %}
+                {% empty %}
+                    <div class="col-span-2 text-center text-gray-500 py-8">
+                        <i class="fa fa-folder-open text-4xl mb-2"></i>
+                        <div>No past questions found.</div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="masters-notes" class="tab-content hidden flex justify-center">
+        <div class="w-full max-w-3xl bg-white rounded-xl shadow border border-blue-100 p-6 mt-2">
+            <h3 class="text-xl font-semibold mb-4 flex items-center justify-center"><i class="fa fa-book-open mr-2 text-blue-400"></i>Masters Notes</h3>
+            <div class="mb-4 flex flex-wrap justify-center gap-2">
+                <button class="subtab-link px-4 py-1 rounded bg-blue-100 text-blue-700 font-medium active" data-subtab="mastersnotes-syllabus">Syllabus</button>
+                <button class="subtab-link px-4 py-1 rounded bg-blue-100 text-blue-700 font-medium" data-subtab="mastersnotes-notes">Notes</button>
+                <button class="subtab-link px-4 py-1 rounded bg-blue-100 text-blue-700 font-medium" data-subtab="mastersnotes-past">Past Questions</button>
+            </div>
+            <div id="mastersnotes-syllabus" class="subtab-content">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
+                {% for resource in resources %}
+                    {% if resource.category.name == 'Masters Notes' and 'syllabus' in resource.title|lower %}
+                    {% include 'resources/resource_card.html' with resource=resource %}
+                    {% endif %}
+                {% empty %}
+                    <div class="col-span-2 text-center text-gray-500 py-8">
+                        <i class="fa fa-folder-open text-4xl mb-2"></i>
+                        <div>No syllabus found.</div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+            <div id="mastersnotes-notes" class="subtab-content hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
+                {% for resource in resources %}
+                    {% if resource.category.name == 'Masters Notes' and 'note' in resource.title|lower %}
+                    {% include 'resources/resource_card.html' with resource=resource %}
+                    {% endif %}
+                {% empty %}
+                    <div class="col-span-2 text-center text-gray-500 py-8">
+                        <i class="fa fa-folder-open text-4xl mb-2"></i>
+                        <div>No notes found.</div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+            <div id="mastersnotes-past" class="subtab-content hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {% for resource in resources %}
+                    {% if resource.category.name == 'Masters Notes' and 'past' in resource.title|lower %}
+                    {% include 'resources/resource_card.html' with resource=resource %}
+                    {% endif %}
+                {% empty %}
+                    <div class="col-span-2 text-center text-gray-500 py-8">
+                        <i class="fa fa-folder-open text-4xl mb-2"></i>
+                        <div>No past questions found.</div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // Tab switching logic
+    document.querySelectorAll('.tab-link').forEach(function(tab) {
+        tab.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelectorAll('.tab-link').forEach(function(t) { t.classList.remove('active'); });
+            document.querySelectorAll('.tab-content').forEach(function(tc) { tc.classList.add('hidden'); });
+            tab.classList.add('active');
+            document.getElementById(tab.getAttribute('data-tab')).classList.remove('hidden');
+        });
+    });
+    // Show first tab by default
+    document.querySelector('.tab-link').click();
+
+    // Subtab switching logic
+    document.querySelectorAll('.subtab-link').forEach(function(subtab) {
+        subtab.addEventListener('click', function(e) {
+            e.preventDefault();
+            var parent = subtab.closest('.tab-content');
+            parent.querySelectorAll('.subtab-link').forEach(function(st) { st.classList.remove('active'); });
+            parent.querySelectorAll('.subtab-content').forEach(function(stc) { stc.classList.add('hidden'); });
+            subtab.classList.add('active');
+            parent.querySelector('#' + subtab.getAttribute('data-subtab')).classList.remove('hidden');
+        });
+    });
+    // Show first subtab by default in each tab
+    document.querySelectorAll('.tab-content').forEach(function(tab) {
+        var firstSubtab = tab.querySelector('.subtab-link');
+        if (firstSubtab) firstSubtab.click();
+    });
+
+    // Search/filter logic
+    document.getElementById('resourceSearch').addEventListener('input', filterResourceCards);
+    document.getElementById('resourceCategoryFilter').addEventListener('change', filterResourceCards);
+    document.getElementById('resourceUniversityFilter').addEventListener('change', filterResourceCards);
+
+    function filterResourceCards() {
+        var search = document.getElementById('resourceSearch').value.toLowerCase();
+        var cat = document.getElementById('resourceCategoryFilter').value;
+        var uni = document.getElementById('resourceUniversityFilter').value;
+        document.querySelectorAll('.resource-item').forEach(function(item) {
+            var text = item.textContent.toLowerCase();
+            var show = true;
+            if (search && !text.includes(search)) show = false;
+            if (cat && !text.includes(cat.toLowerCase())) show = false;
+            if (uni && !text.includes(uni.toLowerCase())) show = false;
+            item.style.display = show ? '' : 'none';
+        });
+    }
+    </script>
+</div>
+<script>
+    document.getElementById('categoryFilter').addEventListener('change', filterResources);
+    document.getElementById('universityFilter').addEventListener('change', filterResources);
+    function filterResources() {
+        var cat = document.getElementById('categoryFilter').value;
+        var uni = document.getElementById('universityFilter').value;
+        document.querySelectorAll('.resource-item').forEach(function(item) {
+            var show = true;
+            if (cat && item.getAttribute('data-category') !== cat) show = false;
+            if (uni && item.getAttribute('data-university') !== uni) show = false;
+            item.style.display = show ? '' : 'none';
+        });
+    }
+</script>
+{% endblock %}

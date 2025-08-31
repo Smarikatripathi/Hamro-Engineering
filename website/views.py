@@ -1,7 +1,10 @@
-from django.shortcuts import render
+
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.utils import timezone
 from datetime import timedelta
 import json
@@ -9,7 +12,33 @@ import json
 from notifications.models import Announcement
 from questions.models import MockTest, Subject
 from colleges.models import College
-from payments.models import SubscriptionPlan
+from payments.models import SubscriptionPlan, UserSubscription
+
+# Payment unlock view
+@login_required
+@require_POST
+@csrf_exempt
+def pay_to_unlock(request):
+    # Placeholder: In production, redirect to payment gateway (Khalti/eSewa/Fonepay)
+    # For now, simulate payment success and activate subscription
+    user = request.user
+    # Get a default plan (e.g., first active plan)
+    plan = SubscriptionPlan.objects.filter(is_active=True).first()
+    if not plan:
+        messages.error(request, 'No subscription plan available.')
+        return redirect('website:pricing')
+    # Create or activate subscription
+    now = timezone.now()
+    end_date = now + timedelta(days=30)  # Example: 30 days
+    UserSubscription.objects.create(
+        user=user,
+        plan=plan,
+        status='active',
+        start_date=now,
+        end_date=end_date
+    )
+    messages.success(request, 'Payment successful! Mock Test unlocked.')
+    return redirect('website:mock_test')
 
 
 def index(request):
@@ -126,3 +155,21 @@ def resources(request):
         'colleges': colleges,
     }
     return render(request, 'website/resources.html', context)
+
+
+# MCQ Practice (Free)
+def mcq_practice(request):
+    return render(request, 'website/mcq_practice.html')
+
+# Mock Test (Locked)
+@login_required
+def mock_test(request):
+    user = request.user
+    # Check if user has an active subscription
+    active_subscription = UserSubscription.objects.filter(user=user, status='active').first()
+    if not active_subscription:
+        # Show locked message or redirect to pricing
+        return render(request, 'website/mock_test_locked.html')
+    # Show available mock tests
+    available_tests = MockTest.objects.filter(is_active=True)
+    return render(request, 'website/mock_test.html', {'available_tests': available_tests})

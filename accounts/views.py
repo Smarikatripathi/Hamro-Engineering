@@ -28,8 +28,18 @@ def register_page(request):
 
 def login_page(request):
     """Template view for user login page"""
+    from django.contrib.auth import authenticate
     if request.user.is_authenticated:
         return redirect('website:dashboard')
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        user = authenticate(request, email=email, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('website:dashboard')
+        else:
+            return render(request, 'accounts/login.html', {'error': 'Invalid credentials'})
     return render(request, 'accounts/login.html')
 
 

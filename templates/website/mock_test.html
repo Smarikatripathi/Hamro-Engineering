@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Mock Tests - Hamro Engineering{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto py-12">
+    <h1 class="text-3xl font-bold mb-6">Mock Tests</h1>
+    <p class="mb-8 text-gray-600">Access all available mock tests below.</p>
+    {% if available_tests %}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {% for test in available_tests %}
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold mb-2">{{ test.name }}</h2>
+                <p class="text-gray-600 mb-2">{{ test.description|truncatewords:15 }}</p>
+                <div class="flex justify-between text-sm text-gray-500">
+                    <span>{{ test.test_type }}</span>
+                    <span>{{ test.duration_minutes }} min</span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-gray-500">No mock tests available at the moment.</p>
+    {% endif %}
+</div>
+{% endblock %}

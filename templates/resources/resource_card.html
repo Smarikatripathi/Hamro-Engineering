@@ -1,0 +1,36 @@
+<div class="resource-item bg-white rounded-xl shadow p-6 flex flex-col justify-between border border-blue-100 my-4 transition hover:shadow-lg">
+    <div class="flex items-center mb-2">
+        {% if resource.file %}
+            <i class="fa fa-file-pdf text-red-500 text-xl mr-2" title="PDF"></i>
+        {% elif resource.link %}
+            <i class="fa fa-link text-blue-500 text-xl mr-2" title="Link"></i>
+        {% else %}
+            <i class="fa fa-file text-gray-400 text-xl mr-2" title="Resource"></i>
+        {% endif %}
+        <h4 class="text-lg font-bold text-navy-900">{{ resource.title }}</h4>
+    </div>
+    <div class="text-xs text-gray-400 mb-1 flex items-center gap-2">
+        <span>{{ resource.category.name }}</span>
+        {% if resource.university %}
+        <span>| {{ resource.university.name }} ({{ resource.university.level|title }})</span>
+        {% endif %}
+        {% if resource.created_at %}
+        <span>| Uploaded {{ resource.created_at|date:'M d, Y' }}</span>
+        {% endif %}
+    </div>
+    <p class="mb-4 text-gray-700 text-sm">{{ resource.description }}</p>
+    <div class="flex items-center justify-between mt-2">
+        <div class="flex space-x-2">
+            {% if resource.file %}
+            <a href="{{ resource.file.url }}" class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-sm font-medium flex items-center gap-1" download><i class="fa fa-download"></i>Download</a>
+            {% endif %}
+            {% if resource.link %}
+            <a href="{{ resource.link }}" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm font-medium flex items-center gap-1" target="_blank"><i class="fa fa-external-link-alt"></i>View Link</a>
+            {% endif %}
+        </div>
+        <div class="flex items-center gap-3">
+            <button class="text-gray-400 hover:text-blue-500 transition" title="Like"><i class="fa fa-thumbs-up"></i></button>
+            <button class="text-gray-400 hover:text-red-500 transition" title="Report"><i class="fa fa-flag"></i></button>
+        </div>
+    </div>
+</div>

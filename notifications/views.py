@@ -1,3 +1,13 @@
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+
+# User-facing notifications page
+@login_required
+def notifications_page(request):
+    notifications = []
+    if hasattr(request.user, 'notification_set'):
+        notifications = request.user.notification_set.all().order_by('-created_at')[:20]
+    return render(request, 'notifications/notifications_page.html', {'notifications': notifications})
 from rest_framework import generics, permissions, status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
