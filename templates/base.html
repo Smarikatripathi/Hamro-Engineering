@@ -12,6 +12,8 @@
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Alpine.js for interactivity -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -93,9 +95,9 @@
                     <a href="{% url 'website:index' %}" class="text-gray-700 hover:text-blue-600 font-medium text-sm transition-colors">Home</a>
                     <a href="{% url 'website:about' %}" class="text-gray-700 hover:text-blue-600 font-medium text-sm transition-colors">About</a>
                     <a href="{% url 'website:features' %}" class="text-gray-700 hover:text-blue-600 font-medium text-sm transition-colors">Features</a>
-                    <a href="{% url 'website:contact' %}" class="text-gray-700 hover:text-blue-600 font-medium text-sm transition-colors">Contact</a>
-                    <a href="/resources/" class="text-gray-700 hover:text-blue-600 font-medium text-sm transition-colors">Resources</a>
-                    <a href="/notifications/" class="text-gray-700 hover:text-blue-600 font-medium text-sm transition-colors flex items-center"><i class="fas fa-bell mr-1"></i>Notifications</a>
+                    <a href="/courses/" class="text-gray-700 hover:text-blue-600 font-medium text-sm transition-colors">Courses</a>
+                    <a href="/entrance/" class="text-gray-700 hover:text-blue-600 font-medium text-sm transition-colors">Entrance</a>
+                    <a href="/news/" class="text-gray-700 hover:text-blue-600 font-medium text-sm transition-colors flex items-center"><i class="fas fa-newspaper mr-1"></i>News</a>
                 </div>
                 
                 <!-- Auth Buttons -->

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="max-w-4xl mx-auto py-10 px-4">
+    <h2 class="text-2xl font-bold text-center mb-8 text-navy-900">Semester {{ semester }} - {{ field|title }} - {{ university.name }}</h2>
+    <p class="text-center text-gray-500 mb-10">Subjects and resources for this university, field, and semester.</p>
+    <div class="mb-8">
+        <h3 class="text-lg font-semibold mb-4 text-navy-800">Subjects</h3>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {% for subject in subjects %}
+            <li class="bg-navy-50 rounded-lg p-4 shadow flex flex-col">
+                <a href="{% url 'website:subject_detail' semester field university.id subject.id %}" class="font-medium text-navy-900 hover:underline">{{ subject.name }}</a>
+                <span class="text-xs text-gray-500">{{ subject.description }}</span>
+            </li>
+            {% empty %}
+            <li class="text-gray-400 text-sm italic">No subjects found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

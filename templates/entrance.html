@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="max-w-5xl mx-auto py-12 px-4">
+    <h2 class="text-3xl font-bold text-center mb-6 text-navy-900">Bachelor Entrance</h2>
+    <p class="text-center text-gray-500 mb-8">Practice MCQs, take mock tests, and access resources for your engineering entrance preparation.</p>
+
+    <div x-data="{ tab: 'mcq' }" class="bg-white rounded-xl shadow p-6">
+        <!-- Tabs -->
+        <div class="flex justify-center mb-8">
+            <button @click="tab = 'mcq'" :class="tab === 'mcq' ? 'bg-navy-100 text-navy-900' : 'bg-gray-100 text-gray-500'" class="px-6 py-2 rounded-l-lg font-semibold focus:outline-none">MCQ Practice</button>
+            <button @click="tab = 'mock'" :class="tab === 'mock' ? 'bg-navy-100 text-navy-900' : 'bg-gray-100 text-gray-500'" class="px-6 py-2 font-semibold focus:outline-none">Mock Test</button>
+            <button @click="tab = 'resources'" :class="tab === 'resources' ? 'bg-navy-100 text-navy-900' : 'bg-gray-100 text-gray-500'" class="px-6 py-2 rounded-r-lg font-semibold focus:outline-none">Resources</button>
+        </div>
+
+        <!-- MCQ Practice Tab -->
+        <div x-show="tab === 'mcq'">
+            <h3 class="text-xl font-semibold mb-4 text-navy-800">Practice MCQs by Subject</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <!-- Example subjects, replace with dynamic content -->
+                <div class="bg-navy-50 rounded-lg p-4 shadow hover-lift flex flex-col items-center">
+                    <i class="fa-solid fa-flask text-2xl text-navy-500 mb-2"></i>
+                    <span class="font-medium text-navy-900">Physics</span>
+                    <a href="#" class="mt-2 text-blue-600 hover:underline text-sm">Practice Now</a>
+                </div>
+                <div class="bg-navy-50 rounded-lg p-4 shadow hover-lift flex flex-col items-center">
+                    <i class="fa-solid fa-atom text-2xl text-navy-500 mb-2"></i>
+                    <span class="font-medium text-navy-900">Chemistry</span>
+                    <a href="#" class="mt-2 text-blue-600 hover:underline text-sm">Practice Now</a>
+                </div>
+                <div class="bg-navy-50 rounded-lg p-4 shadow hover-lift flex flex-col items-center">
+                    <i class="fa-solid fa-calculator text-2xl text-navy-500 mb-2"></i>
+                    <span class="font-medium text-navy-900">Mathematics</span>
+                    <a href="#" class="mt-2 text-blue-600 hover:underline text-sm">Practice Now</a>
+                </div>
+                <!-- Add more subjects dynamically -->
+            </div>
+        </div>
+
+        <!-- Mock Test Tab -->
+        <div x-show="tab === 'mock'">
+            <h3 class="text-xl font-semibold mb-4 text-navy-800">Available Mock Tests</h3>
+            <div class="space-y-4">
+                <!-- Example mock tests, replace with dynamic content -->
+                <div class="bg-navy-50 rounded-lg p-4 shadow flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <span class="font-medium text-navy-900">IOE Full Mock Test</span>
+                        <p class="text-gray-500 text-sm">100 Questions &middot; 2 hours</p>
+                    </div>
+                    <a href="#" class="mt-2 md:mt-0 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold text-sm">Start Test</a>
+                </div>
+                <div class="bg-navy-50 rounded-lg p-4 shadow flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <span class="font-medium text-navy-900">KU Entrance Mock Test</span>
+                        <p class="text-gray-500 text-sm">80 Questions &middot; 1.5 hours</p>
+                    </div>
+                    <a href="#" class="mt-2 md:mt-0 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold text-sm">Start Test</a>
+                </div>
+                <!-- Add more mock tests dynamically -->
+            </div>
+        </div>
+
+        <!-- Resources Tab -->
+        <div x-show="tab === 'resources'">
+            <h3 class="text-xl font-semibold mb-4 text-navy-800">Entrance Resources</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <!-- Example resources, replace with dynamic content -->
+                <div class="bg-navy-50 rounded-lg p-4 shadow flex flex-col items-center">
+                    <i class="fa-solid fa-file-lines text-2xl text-navy-500 mb-2"></i>
+                    <span class="font-medium text-navy-900">IOE Syllabus</span>
+                    <a href="#" class="mt-2 text-blue-600 hover:underline text-sm">View PDF</a>
+                </div>
+                <div class="bg-navy-50 rounded-lg p-4 shadow flex flex-col items-center">
+                    <i class="fa-solid fa-book-open text-2xl text-navy-500 mb-2"></i>
+                    <span class="font-medium text-navy-900">Past Questions</span>
+                    <a href="#" class="mt-2 text-blue-600 hover:underline text-sm">Download</a>
+                </div>
+                <div class="bg-navy-50 rounded-lg p-4 shadow flex flex-col items-center">
+                    <i class="fa-solid fa-note-sticky text-2xl text-navy-500 mb-2"></i>
+                    <span class="font-medium text-navy-900">Notes & Solutions</span>
+                    <a href="#" class="mt-2 text-blue-600 hover:underline text-sm">View Notes</a>
+                </div>
+                <!-- Add more resources dynamically -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

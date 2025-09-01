@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="max-w-3xl mx-auto py-10 px-4">
+    <h2 class="text-2xl font-bold text-center mb-8 text-navy-900">Semester {{ semester }}</h2>
+    <p class="text-center text-gray-500 mb-10">Select a field to view available universities and courses.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {% for field in fields %}
+        <a href="{% url 'website:field_detail' semester field.key %}" class="block bg-navy-50 rounded-xl shadow p-8 text-center font-bold text-lg text-navy-900 hover:bg-navy-600 hover:text-white transition">
+            <i class="fa {{ field.icon }} text-3xl mb-2"></i>
+            <div>{{ field.label }}</div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

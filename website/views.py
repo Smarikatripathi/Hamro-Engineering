@@ -1,4 +1,74 @@
+def subject_detail(request, semester, field, university_id, subject_id):
+    from questions.models import Subject
+    from resources.models import University, Resource, ResourceCategory
+    university = University.objects.get(id=university_id)
+    subject = Subject.objects.get(id=subject_id)
+    notes_cat = ResourceCategory.objects.filter(name__icontains='note').first()
+    syllabus_cat = ResourceCategory.objects.filter(name__icontains='syllabus').first()
+    pastq_cat = ResourceCategory.objects.filter(name__icontains='past').first()
+    notes_resources = Resource.objects.filter(university=university, category=notes_cat, title__icontains=subject.name)
+    syllabus_resources = Resource.objects.filter(university=university, category=syllabus_cat, title__icontains=subject.name)
+    pastq_resources = Resource.objects.filter(university=university, category=pastq_cat, title__icontains=subject.name)
+    return render(request, 'courses/subject_detail.html', {
+        'semester': semester,
+        'field': field,
+        'university': university,
+        'subject': subject,
+        'notes_resources': notes_resources,
+        'syllabus_resources': syllabus_resources,
+        'pastq_resources': pastq_resources,
+    })
+def university_detail(request, semester, field, university_id):
+    from questions.models import Subject
+    from resources.models import University, Resource, ResourceCategory
+    university = University.objects.get(id=university_id)
+    subjects = Subject.objects.filter(semester=semester, field=field, is_active=True)
+    selected_subject = None
+    notes_resources = syllabus_resources = pastq_resources = []
+    subject_id = request.GET.get('subject')
+    if subject_id:
+        try:
+            selected_subject = subjects.get(id=subject_id)
+        except Subject.DoesNotExist:
+            selected_subject = None
+        if selected_subject:
+            notes_cat = ResourceCategory.objects.filter(name__icontains='note').first()
+            syllabus_cat = ResourceCategory.objects.filter(name__icontains='syllabus').first()
+            pastq_cat = ResourceCategory.objects.filter(name__icontains='past').first()
+            notes_resources = Resource.objects.filter(university=university, category=notes_cat, title__icontains=selected_subject.name)
+            syllabus_resources = Resource.objects.filter(university=university, category=syllabus_cat, title__icontains=selected_subject.name)
+            pastq_resources = Resource.objects.filter(university=university, category=pastq_cat, title__icontains=selected_subject.name)
+    return render(request, 'courses/university_detail.html', {
+        'semester': semester,
+        'field': field,
+        'university': university,
+        'subjects': subjects,
+        'selected_subject': selected_subject,
+        'notes_resources': notes_resources,
+        'syllabus_resources': syllabus_resources,
+        'pastq_resources': pastq_resources,
+    })
+def field_detail(request, semester, field):
+    universities = list(University.objects.filter(level='bachelors').order_by('name'))
+    return render(request, 'courses/field_detail.html', {
+        'semester': semester,
+        'field': field,
+        'universities': universities,
+    })
+from django.shortcuts import render, get_object_or_404
+from questions.models import Subject
+from resources.models import University
 
+def semester_detail(request, semester):
+    fields = [
+        {'key': 'computer', 'label': 'Computer Engineering', 'icon': 'fa-microchip'},
+        {'key': 'software', 'label': 'Software Engineering', 'icon': 'fa-code'},
+        {'key': 'it', 'label': 'Information Technology', 'icon': 'fa-network-wired'},
+    ]
+    return render(request, 'courses/semester_detail.html', {
+        'semester': semester,
+        'fields': fields,
+    })
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt

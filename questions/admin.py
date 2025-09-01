@@ -4,10 +4,10 @@ from .models import Subject, Topic, Question, QuestionOption, MockTest, MockTest
 
 @admin.register(Subject)
 class SubjectAdmin(admin.ModelAdmin):
-    list_display = ['name', 'description', 'is_active', 'created_at']
-    list_filter = ['is_active', 'created_at']
+    list_display = ['name', 'field', 'semester', 'description', 'is_active', 'created_at']
+    list_filter = ['field', 'semester', 'is_active', 'created_at']
     search_fields = ['name', 'description']
-    ordering = ['name']
+    ordering = ['semester', 'name']
 
 
 @admin.register(Topic)

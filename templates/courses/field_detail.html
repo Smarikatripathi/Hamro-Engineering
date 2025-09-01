@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="max-w-3xl mx-auto py-10 px-4">
+    <h2 class="text-2xl font-bold text-center mb-8 text-navy-900">Semester {{ semester }} - {{ field|title }}</h2>
+    <p class="text-center text-gray-500 mb-10">Select a university to view available courses and resources.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {% for uni in universities %}
+        <a href="{% url 'website:university_detail' semester field uni.id %}" class="block bg-blue-50 rounded-xl shadow p-8 text-center font-bold text-lg text-blue-800 hover:bg-blue-600 hover:text-white transition">
+            <i class="fa fa-university text-2xl mb-2"></i>
+            <div>{{ uni.name }}</div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

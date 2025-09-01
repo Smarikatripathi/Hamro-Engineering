@@ -6,8 +6,15 @@ User = get_user_model()
 
 
 class Subject(models.Model):
+    FIELD_CHOICES = [
+        ('computer', 'Computer Engineering'),
+        ('software', 'Software Engineering'),
+        ('it', 'Information Technology'),
+    ]
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField()
+    semester = models.PositiveSmallIntegerField(choices=[(i, f"{i} Semester") for i in range(1, 9)], default=1)
+    field = models.CharField(max_length=20, choices=FIELD_CHOICES, default='computer')
     icon = models.CharField(max_length=50, blank=True, null=True)  # For FontAwesome icons
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)

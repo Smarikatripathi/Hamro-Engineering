@@ -13,6 +13,9 @@ def resources_page(request):
 	categories = ResourceCategory.objects.all()
 	universities = University.objects.all()
 	resources = Resource.objects.all().order_by('-created_at')
+	from questions.models import Subject
+	semesters = list(range(1, 9))
+	subjects_by_semester = {sem: Subject.objects.filter(semester=sem, is_active=True).order_by('name') for sem in semesters}
 
 	if request.method == 'POST':
 		if not request.user.is_authenticated:
@@ -46,6 +49,8 @@ def resources_page(request):
 		'categories': categories,
 		'universities': universities,
 		'resources': resources,
+		'semesters': semesters,
+		'subjects_by_semester': subjects_by_semester,
 	})
 
 class ResourceListAPI(generics.ListAPIView):
