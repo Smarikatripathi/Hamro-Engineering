@@ -1,3 +1,25 @@
+def university_resources(request, university_key):
+	# Map keys to university names
+	university_map = {
+		'tu': 'Tribhuvan University (TU)',
+		'pu': 'Purbanchal University (PU)',
+		'pokhara': 'Pokhara University',
+		'ku': 'Kathmandu University (KU)',
+	}
+	university_name = university_map.get(university_key, 'Unknown University')
+	# List of entrance subjects
+	subjects = [
+		'Physics',
+		'Chemistry',
+		'Mathematics',
+		'English',
+		'Biology',
+	]
+	return render(request, 'resources/university_resources.html', {
+		'university_key': university_key,
+		'university_name': university_name,
+		'subjects': subjects,
+	})
 
 from django.shortcuts import render
 from rest_framework import generics

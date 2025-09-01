@@ -1,19 +1,64 @@
 {% extends 'base.html' %}
+
 {% block content %}
-<div class="max-w-3xl mx-auto py-10 px-4">
-    <h2 class="text-3xl font-bold text-center mb-8 text-navy-900">News & Updates</h2>
-    <ul class="space-y-6">
-        {% for news in news_list %}
-        <li class="bg-white rounded-xl shadow p-6">
-            <div class="flex justify-between items-center mb-2">
-                <span class="text-blue-700 font-semibold">{{ news.title }}</span>
-                <span class="text-xs text-gray-400">{{ news.date }}</span>
-            </div>
-            <div class="text-gray-700">{{ news.content }}</div>
-        </li>
-        {% empty %}
-        <li class="text-gray-400 text-center">No news at the moment.</li>
-        {% endfor %}
-    </ul>
+<!-- News Hero Section -->
+<section class="gradient-bg text-white py-10 mb-8">
+    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">News & Updates</h1>
+        <p class="text-xl text-gray-200 leading-relaxed max-w-2xl mx-auto">
+            Stay up to date with the latest announcements, exam schedules, platform updates, and engineering news.
+        </p>
+    </div>
+</section>
+
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+    <!-- News List -->
+    <div class="md:col-span-3">
+        <ul class="space-y-6">
+            {% for news in news_list %}
+            <li class="bg-white rounded-2xl shadow p-8 flex flex-col md:flex-row md:items-center md:justify-between hover:shadow-lg transition">
+                <div class="flex-1">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-bullhorn text-blue-600 text-xl mr-3"></i>
+                        <span class="text-lg font-semibold text-blue-900">{{ news.title }}</span>
+                    </div>
+                    <div class="text-gray-700 mb-2">{{ news.content }}</div>
+                </div>
+                <div class="md:ml-8 flex flex-col items-end mt-4 md:mt-0">
+                    <span class="text-xs text-gray-400 mb-2">{{ news.date }}</span>
+                    {% if news.link %}
+                    <a href="{{ news.link }}" class="text-blue-600 text-sm font-semibold hover:underline" target="_blank">
+                        Read More <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                    {% endif %}
+                </div>
+            </li>
+            {% empty %}
+            <li class="text-gray-400 text-center">No news at the moment.</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <!-- Sidebar -->
+    <aside class="md:col-span-1">
+        <div class="bg-white rounded-2xl shadow p-6 mb-8">
+            <h3 class="text-lg font-bold text-navy-900 mb-4 flex items-center"><i class="fas fa-list mr-2 text-blue-600"></i>Categories</h3>
+            <ul class="space-y-2 text-gray-700">
+                <li><a href="#" class="hover:text-blue-600">All</a></li>
+                <li><a href="#" class="hover:text-blue-600">Announcements</a></li>
+                <li><a href="#" class="hover:text-blue-600">Exam Schedules</a></li>
+                <li><a href="#" class="hover:text-blue-600">Platform Updates</a></li>
+                <li><a href="#" class="hover:text-blue-600">Engineering News</a></li>
+            </ul>
+        </div>
+        <div class="bg-white rounded-2xl shadow p-6">
+            <h3 class="text-lg font-bold text-navy-900 mb-4 flex items-center"><i class="fas fa-link mr-2 text-green-600"></i>Quick Links</h3>
+            <ul class="space-y-2 text-gray-700">
+                <li><a href="/entrance/" class="hover:text-green-600">Entrance Info</a></li>
+                <li><a href="/courses/" class="hover:text-green-600">Courses</a></li>
+                <li><a href="/resources/" class="hover:text-green-600">Resources</a></li>
+                <li><a href="/features/" class="hover:text-green-600">Platform Features</a></li>
+            </ul>
+        </div>
+    </aside>
 </div>
 {% endblock %}

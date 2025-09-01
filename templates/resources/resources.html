@@ -1,32 +1,44 @@
 
 {% extends 'base.html' %}
+{% block title %}Resources - Hamro Engineering{% endblock %}
+
 {% block content %}
-<div class="max-w-5xl mx-auto py-10 px-4">
-    <h2 class="text-3xl font-bold text-center mb-8 text-navy-900">Resources</h2>
-    <p class="text-center text-gray-500 mb-10">Browse semester-wise subjects, notes, syllabus, and past questions for Bachelors engineering students.</p>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {% for sem in semesters %}
-        <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center hover-lift">
-            <div class="w-12 h-12 bg-gradient-to-r from-blue-100 to-blue-200 rounded-full flex items-center justify-center mb-3">
-                <i class="fa fa-layer-group text-blue-500 text-2xl"></i>
-            </div>
-            <h3 class="text-lg font-semibold text-navy-900 mb-2">{{ sem }}<sup>{% if sem == 1 %}st{% elif sem == 2 %}nd{% elif sem == 3 %}rd{% else %}th{% endif %}</sup> Semester</h3>
-            <ul class="w-full mt-2 mb-2">
-                {% with subject_list=subjects_by_semester.sem %}
-                    {% if subject_list %}
-                        {% for subject in subject_list %}
-                            <li class="py-1 border-b last:border-b-0 flex items-center">
-                                <i class="fa fa-book text-blue-400 mr-2"></i>
-                                <span class="text-gray-800 text-sm">{{ subject.name }}</span>
-                            </li>
-                        {% endfor %}
-                    {% else %}
-                        <li class="text-gray-400 text-sm italic">No subjects found.</li>
-                    {% endif %}
-                {% endwith %}
-            </ul>
-        </div>
-        {% endfor %}
+<!-- Hero Section -->
+<section class="gradient-bg text-white py-10">
+    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Entrance Resources</h1>
+        <p class="text-xl text-gray-200 leading-relaxed max-w-2xl mx-auto">
+            Select your university to view entrance syllabus and resources for each subject.
+        </p>
     </div>
-</div>
+</section>
+
+<!-- University Selection -->
+<section class="py-10 bg-white">
+    <div class="max-w-3xl mx-auto px-4">
+        <h2 class="text-2xl font-bold text-navy-900 mb-8 text-center">Choose a University</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-center">
+            <a href="{% url 'resources:university_resources' 'tu' %}" class="w-full bg-blue-50 hover:bg-blue-100 rounded-xl shadow p-8 flex flex-col items-center transition cursor-pointer focus:outline-none">
+                <i class="fa fa-university text-blue-600 text-3xl mb-2"></i>
+                <span class="font-bold text-lg text-blue-900 mb-2">Tribhuvan University (TU)</span>
+                <span class="text-gray-500 text-sm mb-2">IOE Entrance</span>
+            </a>
+            <a href="{% url 'resources:university_resources' 'pu' %}" class="w-full bg-green-50 hover:bg-green-100 rounded-xl shadow p-8 flex flex-col items-center transition cursor-pointer focus:outline-none">
+                <i class="fa fa-university text-green-600 text-3xl mb-2"></i>
+                <span class="font-bold text-lg text-green-900 mb-2">Purbanchal University (PU)</span>
+                <span class="text-gray-500 text-sm mb-2">PU Entrance</span>
+            </a>
+            <a href="{% url 'resources:university_resources' 'pokhara' %}" class="w-full bg-purple-50 hover:bg-purple-100 rounded-xl shadow p-8 flex flex-col items-center transition cursor-pointer focus:outline-none">
+                <i class="fa fa-university text-purple-600 text-3xl mb-2"></i>
+                <span class="font-bold text-lg text-purple-900 mb-2">Pokhara University (PU)</span>
+                <span class="text-gray-500 text-sm mb-2">PU Entrance</span>
+            </a>
+            <a href="{% url 'resources:university_resources' 'ku' %}" class="w-full bg-yellow-50 hover:bg-yellow-100 rounded-xl shadow p-8 flex flex-col items-center transition cursor-pointer focus:outline-none">
+                <i class="fa fa-university text-yellow-600 text-3xl mb-2"></i>
+                <span class="font-bold text-lg text-yellow-900 mb-2">Kathmandu University (KU)</span>
+                <span class="text-gray-500 text-sm mb-2">KU Entrance</span>
+            </a>
+        </div>
+    </div>
+</section>
 {% endblock %}

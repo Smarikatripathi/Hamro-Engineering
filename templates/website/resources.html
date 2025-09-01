@@ -3,42 +3,8 @@
 {% block title %}Resources - Hamro Engineering{% endblock %}
 
 {% block content %}
-<div class="max-w-7xl mx-auto">
-    <h1 class="text-4xl font-bold text-center mb-8">Study Resources</h1>
-    
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div class="bg-white p-6 rounded-lg shadow-md">
-            <h2 class="text-2xl font-semibold mb-4">Subjects</h2>
-            {% if subjects %}
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {% for subject in subjects %}
-                    <div class="border border-gray-200 rounded-lg p-4">
-                        <h3 class="font-semibold">{{ subject.name }}</h3>
-                        <p class="text-sm text-gray-600">{{ subject.description|truncatewords:10 }}</p>
-                    </div>
-                    {% endfor %}
-                </div>
-            {% else %}
-                <p class="text-gray-500">No subjects available at the moment.</p>
-            {% endif %}
-        </div>
-        
-        <div class="bg-white p-6 rounded-lg shadow-md">
-            <h2 class="text-2xl font-semibold mb-4">Partner Colleges</h2>
-            {% if colleges %}
-                <div class="space-y-4">
-                    {% for college in colleges %}
-                    <div class="border border-gray-200 rounded-lg p-4">
-                        <h3 class="font-semibold">{{ college.name }}</h3>
-                        <p class="text-sm text-gray-600">{{ college.description|truncatewords:15 }}</p>
-                        <p class="text-xs text-gray-500 mt-2">{{ college.location }}</p>
-                    </div>
-                    {% endfor %}
-                </div>
-            {% else %}
-                <p class="text-gray-500">No colleges available at the moment.</p>
-            {% endif %}
-        </div>
-    </div>
+<div class="max-w-3xl mx-auto py-20 text-center">
+    <h1 class="text-4xl font-bold mb-6">Entrance Resources</h1>
+    <p class="text-lg text-gray-600 mb-8">We are preparing a comprehensive collection of entrance exam resources for you. Please check back soon!</p>
 </div>
 {% endblock %}

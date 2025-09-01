@@ -19,7 +19,6 @@ urlpatterns = [
     path('api/questions/', include('questions.urls')),
     path('api/payments/', include('payments.urls')),
     path('api/analytics/', include('analytics.urls')),
-    path('api/notifications/', include('notifications.urls')),
     path('notifications/', include('notifications.urls')),
     path('resources/', include('resources.urls')),
     path('', include('website.urls')),

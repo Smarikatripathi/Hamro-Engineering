@@ -1,10 +1,22 @@
 {% extends 'base.html' %}
+
+{% block title %}Courses - Hamro Engineering{% endblock %}
+
 {% block content %}
-<div class="max-w-6xl mx-auto py-10 px-4">
-    <h2 class="text-3xl font-bold text-center mb-8 text-navy-900">Courses</h2>
-    <p class="text-center text-gray-500 mb-10">Browse semester-wise courses for Computer Engineering, Software Engineering, and IT. Click a subject to view syllabus, notes, and past questions.</p>
-    <div>
-        <!-- Semester Grid -->
+<!-- Hero Section -->
+<section class="gradient-bg text-white py-10">
+    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Courses</h1>
+        <p class="text-xl text-gray-200 leading-relaxed max-w-2xl mx-auto">
+            Explore semester-wise courses for Computer Engineering, Software Engineering, and IT. Click a semester to view all available fields, universities, and subjects with detailed resources.
+        </p>
+    </div>
+</section>
+
+<!-- Semester Grid -->
+<section class="py-6 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-2xl font-bold text-navy-900 mb-8 text-center">Select a Semester</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10">
             {% for sem in semesters %}
             <div>
@@ -15,6 +27,8 @@
             </div>
             {% endfor %}
         </div>
+        <p class="text-center text-gray-500">After selecting a semester, choose your field and university to access subject-wise syllabus, notes, and past questions.</p>
     </div>
-</div>
+</section>
+
 {% endblock %}

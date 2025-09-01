@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ university_name }} Entrance Resources{% endblock %}
+
+{% block content %}
+<section class="gradient-bg text-white py-10">
+    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">{{ university_name }} Entrance</h1>
+    <p class="text-xl text-gray-200 leading-relaxed max-w-2xl mx-auto"> 
+            Select a subject to view syllabus, notes, and past questions for the entrance exam.
+        </p>
+    </div>
+</section>
+
+<section class="py-10 bg-white">
+    <div class="max-w-3xl mx-auto px-4">
+        <h2 class="text-2xl font-bold text-navy-900 mb-8 text-center">Subjects</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-center">
+            {% for subject in subjects %}
+            <div class="bg-blue-50 hover:bg-blue-100 rounded-xl shadow p-8 flex flex-col items-center transition cursor-pointer focus:outline-none">
+                <i class="fa fa-book text-blue-600 text-3xl mb-2"></i>
+                <span class="font-bold text-lg text-blue-900 mb-2">{{ subject }}</span>
+                <span class="text-gray-500 text-sm mb-2">Entrance Syllabus & Resources</span>
+                <a href="#" class="text-blue-600 font-semibold hover:underline mt-2">View Resources</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
