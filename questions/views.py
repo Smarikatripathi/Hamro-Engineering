@@ -1,4 +1,79 @@
 from rest_framework import generics, permissions, status
+from django.contrib.admin.views.decorators import staff_member_required
+from django.utils.decorators import method_decorator
+from django.shortcuts import render, redirect
+from .forms import PDFUploadForm
+import pdfplumber
+@method_decorator(staff_member_required, name='dispatch')
+class PDFUploadView(generics.GenericAPIView):
+    """Staff-only view for uploading a PDF and extracting MCQs."""
+    def get(self, request):
+        form = PDFUploadForm()
+        return render(request, 'questions/pdf_upload.html', {'form': form})
+
+    def post(self, request):
+        form = PDFUploadForm(request.POST, request.FILES)
+        imported_count = 0
+        errors = []
+        if form.is_valid():
+            pdf_file = form.cleaned_data['pdf_file']
+            with pdfplumber.open(pdf_file) as pdf:
+                text = "\n".join(page.extract_text() or '' for page in pdf.pages)
+
+            # Simple MCQ parser: expects format as described
+            import re
+            question_blocks = re.split(r'\n\d+\. ', text)
+            for block in question_blocks:
+                if not block.strip():
+                    continue
+                # Extract question, options, and answer
+                lines = block.strip().split('\n')
+                if len(lines) < 3:
+                    continue
+                question_text = lines[0].strip()
+                options = []
+                answer = None
+                for line in lines[1:]:
+                    opt_match = re.match(r'([A-D])\)\s*(.+)', line)
+                    if opt_match:
+                        options.append((opt_match.group(1), opt_match.group(2).strip()))
+                    ans_match = re.match(r'Answer[:\s]+([A-D])', line, re.IGNORECASE)
+                    if ans_match:
+                        answer = ans_match.group(1)
+                if not question_text or len(options) < 2 or not answer:
+                    errors.append(f"Skipped: '{question_text[:40]}...' (missing options/answer)")
+                    continue
+                # Create Question and Options (assign to first Subject/Topic for demo)
+                from .models import Subject, Topic, Question, QuestionOption
+                subject = Subject.objects.first()
+                topic = Topic.objects.filter(subject=subject).first()
+                if not subject or not topic:
+                    errors.append("No Subject/Topic found. Please create at least one in admin.")
+                    break
+                q = Question.objects.create(
+                    topic=topic,
+                    question_text=question_text,
+                    question_type='mcq',
+                    difficulty='medium',
+                    marks=1,
+                    is_active=True,
+                    created_by=request.user if request.user.is_authenticated else None
+                )
+                for idx, (opt_key, opt_text) in enumerate(options):
+                    QuestionOption.objects.create(
+                        question=q,
+                        option_text=opt_text,
+                        is_correct=(opt_key.upper() == answer.upper()),
+                        order=idx+1
+                    )
+                imported_count += 1
+            return render(request, 'questions/pdf_upload.html', {
+                'form': form,
+                'imported_count': imported_count,
+                'errors': errors,
+                'extracted_text': text
+            })
+        return render(request, 'questions/pdf_upload.html', {'form': form})
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404

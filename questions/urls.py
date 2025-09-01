@@ -7,6 +7,9 @@ urlpatterns = [
     # Basic CRUD operations for questions
     path('', views.QuestionListView.as_view(), name='question-list'),
     path('<int:pk>/', views.QuestionDetailView.as_view(), name='question-detail'),
+
+    # PDF upload for MCQ extraction (staff only)
+    path('upload-pdf/', views.PDFUploadView.as_view(), name='upload-pdf'),
     
     # Mock test related URLs
     path('mock-tests/', views.MockTestListView.as_view(), name='mock-test-list'),

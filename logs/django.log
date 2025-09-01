@@ -9544,3 +9544,249 @@ Watching for file changes with StatReloader
 "GET /courses/ HTTP/1.1" 200 13196
 "GET /entrance/ HTTP/1.1" 200 11490
 "GET /features/ HTTP/1.1" 200 24836
+"GET /courses/ HTTP/1.1" 200 13196
+"GET /entrance/ HTTP/1.1" 200 11490
+"GET /courses/ HTTP/1.1" 200 13196
+"GET /courses/ HTTP/1.1" 200 13196
+"GET /entrance/ HTTP/1.1" 200 11512
+"GET /entrance/ HTTP/1.1" 200 11512
+"GET /entrance/ HTTP/1.1" 200 11512
+"GET /about/ HTTP/1.1" 200 15962
+"GET /entrance/ HTTP/1.1" 200 11512
+"GET /courses/ HTTP/1.1" 200 13196
+"GET /courses/ HTTP/1.1" 200 13836
+"GET /entrance/ HTTP/1.1" 200 11542
+"GET /about/ HTTP/1.1" 200 15962
+"GET /features/ HTTP/1.1" 200 24836
+"GET /courses/ HTTP/1.1" 200 13836
+"GET /courses/ HTTP/1.1" 200 13196
+"GET /about/ HTTP/1.1" 200 15962
+"GET /features/ HTTP/1.1" 200 24836
+"GET /courses/ HTTP/1.1" 200 13196
+"GET /entrance/ HTTP/1.1" 200 11512
+"GET /news/ HTTP/1.1" 200 12703
+"GET / HTTP/1.1" 200 14504
+"GET / HTTP/1.1" 200 14504
+"GET /about/ HTTP/1.1" 200 15962
+"GET / HTTP/1.1" 200 14504
+"GET /about/ HTTP/1.1" 200 15962
+"GET /about/ HTTP/1.1" 200 15996
+"GET / HTTP/1.1" 200 14504
+"GET /about/ HTTP/1.1" 200 15996
+"GET /features/ HTTP/1.1" 200 24836
+"GET /courses/ HTTP/1.1" 200 13196
+"GET /entrance/ HTTP/1.1" 200 11512
+"GET /news/ HTTP/1.1" 200 12703
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 14504
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 6993
+"GET /entrance/ HTTP/1.1" 200 11512
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET / HTTP/1.1" 200 14504
+"GET /entrance/ HTTP/1.1" 200 11512
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET / HTTP/1.1" 200 14504
+"GET /entrance/ HTTP/1.1" 200 11512
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /entrance/ HTTP/1.1" 200 11512
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /entrance/ HTTP/1.1" 200 11512
+"GET /entrance/ HTTP/1.1" 200 11512
+"GET /mcq-practice/ HTTP/1.1" 200 9380
+"GET /mcq-practice/ HTTP/1.1" 200 14233
+"GET /mcq-practice/ HTTP/1.1" 200 14233
+"GET /mcq-practice/ HTTP/1.1" 200 14233
+"GET / HTTP/1.1" 200 14504
+"GET /mcq-practice/ HTTP/1.1" 200 14233
+"GET /mcq-practice/ HTTP/1.1" 200 14233
+C:\Users\ACER\OneDrive\Desktop\Hamro engineering\questions\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ACER\OneDrive\Desktop\Hamro engineering\questions\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ACER\OneDrive\Desktop\Hamro engineering\questions\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 14504
+"GET /courses/ HTTP/1.1" 200 13196
+"GET /entrance/ HTTP/1.1" 200 11512
+"GET /mcq-practice/ HTTP/1.1" 200 14233
+"GET /mcq-practice/ HTTP/1.1" 200 14233
+"GET /courses/ HTTP/1.1" 200 13196
+"GET /courses/semester/1/ HTTP/1.1" 200 10262
+"GET /courses/semester/1/field/computer/ HTTP/1.1" 200 9956
+"GET /courses/semester/1/field/computer/university/2/ HTTP/1.1" 200 12055
+"GET /courses/semester/1/field/computer/university/2/subject/5/ HTTP/1.1" 200 10160
+"GET /courses/ HTTP/1.1" 200 13196
+"GET /courses/semester/1/ HTTP/1.1" 200 10262
+"GET /courses/semester/1/field/computer/ HTTP/1.1" 200 9956
+"GET /courses/semester/1/field/computer/university/2/ HTTP/1.1" 200 12055
+"GET / HTTP/1.1" 200 14504
+"GET / HTTP/1.1" 200 14504
+"GET /courses/ HTTP/1.1" 200 13196
+"GET /courses/semester/1/ HTTP/1.1" 200 10262
+"GET /courses/semester/1/field/computer/ HTTP/1.1" 200 9956
+"GET /courses/semester/1/field/computer/university/2/ HTTP/1.1" 200 12055
+"GET /courses/ HTTP/1.1" 200 13196
+"GET /entrance/ HTTP/1.1" 200 11512
+"GET /mcq-practice/ HTTP/1.1" 200 14233
+"GET /courses/ HTTP/1.1" 200 13196
+"GET /entrance/ HTTP/1.1" 200 11512
+"GET /resources/ HTTP/1.1" 200 11578
+"GET /resources/ HTTP/1.1" 200 11578
+"GET /resources/university/tu/ HTTP/1.1" 200 12371
+"GET /resources/university/pu/ HTTP/1.1" 200 12373
+"GET /resources/university/pokhara/ HTTP/1.1" 200 12357
+"GET /resources/university/ku/ HTTP/1.1" 200 12371
+"GET / HTTP/1.1" 200 14504
+"GET /courses/ HTTP/1.1" 200 13196
+"GET /courses/ HTTP/1.1" 200 13196
+"GET /entrance/ HTTP/1.1" 200 11512
+"GET /resources/ HTTP/1.1" 200 11578
+"GET /resources/university/tu/ HTTP/1.1" 200 12371
+"GET / HTTP/1.1" 200 14504
+C:\Users\ACER\OneDrive\Desktop\Hamro engineering\questions\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ACER\OneDrive\Desktop\Hamro engineering\questions\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 14504
+"GET /courses/ HTTP/1.1" 200 13196
+"GET /entrance/ HTTP/1.1" 200 11512
+"GET /mcq-practice/ HTTP/1.1" 200 14233
+"GET /entrance/ HTTP/1.1" 200 11512
+"GET /resources/ HTTP/1.1" 200 11578
+"GET /resources/university/tu/ HTTP/1.1" 200 12371
+"GET /courses/ HTTP/1.1" 200 13196
+"GET /courses/semester/1/ HTTP/1.1" 200 10262
+C:\Users\ACER\OneDrive\Desktop\Hamro engineering\website\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ACER\OneDrive\Desktop\Hamro engineering\website\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /courses/
+Traceback (most recent call last):
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ACER\OneDrive\Desktop\Hamro engineering\website\views_courses.py", line 26, in courses_page
+    return render(request, 'courses.html', {
+        'semesters': semesters,
+    ...<2 lines>...
+        'data': data,
+    })
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 471, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ACER\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'field_detail' with arguments '(1, 'computer', 2)' not found. 1 pattern(s) tried: ['courses/semester/(?P<semester>[0-9]+)/field/(?P<field>[^/]+)/\\Z']
+"GET /courses/ HTTP/1.1" 500 262625
+"GET /courses/ HTTP/1.1" 200 10693
+"GET /courses/semester/1/field/computer/ HTTP/1.1" 200 9956
+"GET /courses/semester/1/field/computer/university/2/ HTTP/1.1" 200 12055
+"GET /courses/semester/1/field/computer/university/2/subject/5/ HTTP/1.1" 200 10160
+C:\Users\ACER\OneDrive\Desktop\Hamro engineering\website\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /courses/ HTTP/1.1" 200 13196
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 14504
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 6993
+"GET / HTTP/1.1" 200 14504
+"GET /about/ HTTP/1.1" 200 15996
+"GET /features/ HTTP/1.1" 200 24836
+"GET /courses/ HTTP/1.1" 200 13196
+"GET /entrance/ HTTP/1.1" 200 11512
+"GET /courses/ HTTP/1.1" 200 13196
+"GET /entrance/ HTTP/1.1" 200 11512
+"GET /resources/ HTTP/1.1" 200 11578
+"GET /resources/university/tu/ HTTP/1.1" 200 12371
+"GET /entrance/ HTTP/1.1" 200 11512
+"GET /resources/ HTTP/1.1" 200 11578
+"GET /courses/ HTTP/1.1" 200 13196
+"GET /courses/semester/1/ HTTP/1.1" 200 10262
+C:\Users\ACER\OneDrive\Desktop\Hamro engineering\website\views_courses.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ACER\OneDrive\Desktop\Hamro engineering\website\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\ACER\OneDrive\Desktop\Hamro engineering\website\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /courses/ HTTP/1.1" 200 10708
+"GET /courses/university/2/ HTTP/1.1" 200 10232
+"GET /courses/university/2/field/computer/ HTTP/1.1" 200 11803
+"GET /courses/semester/1/field/computer/university/2/ HTTP/1.1" 200 12055
+"GET /courses/ HTTP/1.1" 200 10708
+"GET /courses/ HTTP/1.1" 200 11120

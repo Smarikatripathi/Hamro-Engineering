@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="max-w-xl mx-auto mt-10 p-6 bg-white rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">Upload PDF to Extract MCQs</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Upload</button>
+    </form>
+    {% if imported_count %}
+        <div class="mt-6 p-4 bg-green-100 text-green-800 rounded">
+            <strong>{{ imported_count }}</strong> MCQ(s) imported successfully!
+        </div>
+    {% endif %}
+    {% if errors %}
+        <div class="mt-4 p-4 bg-yellow-100 text-yellow-800 rounded">
+            <strong>Some questions were skipped:</strong>
+            <ul class="list-disc ml-6">
+                {% for err in errors %}
+                    <li>{{ err }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    {% if extracted_text %}
+        <h3 class="mt-6 text-lg font-semibold">Extracted Text:</h3>
+        <pre class="bg-gray-100 p-4 rounded mt-2 overflow-x-auto" style="max-height: 400px;">{{ extracted_text }}</pre>
+    {% endif %}
+</div>
+{% endblock %}

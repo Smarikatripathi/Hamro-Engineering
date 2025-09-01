@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}MCQ Practice - Hamro Engineering{% endblock %}
-
+}
 {% block content %}
 <!-- MCQ Practice Exam Interface -->
 <section class="bg-gradient-to-b from-navy-900 to-navy-800 text-white py-10">
@@ -90,7 +89,7 @@ function updateTimer() {
     timer--;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+</script>
     interval = setInterval(updateTimer, 1000);
     document.getElementById('mcq-form').onsubmit = function(e) {
         e.preventDefault();
@@ -113,4 +112,5 @@ function submitExam() {
     document.getElementById('time-taken').textContent = `${min}m ${sec}s`;
 }
 </script>
+{% endblock %}
 {% endblock %}

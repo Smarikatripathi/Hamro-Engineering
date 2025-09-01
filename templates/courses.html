@@ -3,31 +3,32 @@
 {% block title %}Courses - Hamro Engineering{% endblock %}
 
 {% block content %}
+
 <!-- Hero Section -->
 <section class="gradient-bg text-white py-10">
     <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
         <h1 class="text-4xl md:text-5xl font-bold mb-6">Courses</h1>
         <p class="text-xl text-gray-200 leading-relaxed max-w-2xl mx-auto">
-            Explore semester-wise courses for Computer Engineering, Software Engineering, and IT. Click a semester to view all available fields, universities, and subjects with detailed resources.
+            Start by selecting your University. Then choose your field and semester to view all available subjects and resources.
         </p>
     </div>
 </section>
 
-<!-- Semester Grid -->
+<!-- University Grid -->
 <section class="py-6 bg-white">
     <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-2xl font-bold text-navy-900 mb-8 text-center">Select a Semester</h2>
+        <h2 class="text-2xl font-bold text-navy-900 mb-8 text-center">Select a University</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10">
-            {% for sem in semesters %}
+            {% for uni in universities %}
             <div>
-                <a href="{% url 'website:semester_detail' sem %}" class="block w-full px-6 py-8 rounded-xl shadow font-bold text-lg focus:outline-none flex flex-col items-center transition bg-blue-50 text-blue-800 hover:bg-blue-600 hover:text-white">
-                    <i class="fa fa-layer-group text-3xl mb-2"></i>
-                    Semester {{ sem }}
+                <a href="{% url 'website:university_fields' uni.id %}" class="block w-full px-6 py-8 rounded-xl shadow font-bold text-lg focus:outline-none flex flex-col items-center transition bg-blue-50 text-blue-800 hover:bg-blue-600 hover:text-white">
+                    <i class="fa fa-university text-3xl mb-2"></i>
+                    {{ uni.name }}
                 </a>
             </div>
             {% endfor %}
         </div>
-        <p class="text-center text-gray-500">After selecting a semester, choose your field and university to access subject-wise syllabus, notes, and past questions.</p>
+        <p class="text-center text-gray-500">After selecting a university, choose your field and semester to access subject-wise syllabus, notes, and past questions.</p>
     </div>
 </section>
 
